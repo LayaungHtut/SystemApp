@@ -1,29 +1,20 @@
-<!-- <script>
+<script lang="ts">
 	import { create, all } from 'mathjs';
-
-    // @ts-ignore
-  import Plotly from 'plotly.js-dist-min';
-
-
+	import "../../style.css"
 	const math = create(all);
+
+	type CalcRecord = { expression: string; result: string };
 
 	let expression = $state('');
 	let result = $state('');
 	let error = $state('');
-	let history = $state(['null']);
+	let history = $state<CalcRecord[]>([]);
 	let graphVisible = $state(false);
-	let graphData = $state(['null']);
-	let graph = $state(null);
-
-$effect(async () => {
-	if (graph && graphVisible) {
-		const Plotly = (await import('plotly.js-dist-min')).default;
-		Plotly.newPlot(graph, graphData);
-	}
-});
+	let graphData = $state<any[]>([]);
+	let graph = $state<HTMLElement | null>(null);
 
 
-	const append = (char) => {
+	const append = (char: string) => {
 		expression += char;
 		error = '';
 	};
@@ -46,14 +37,14 @@ $effect(async () => {
 			} else {
 				graphVisible = false;
 			}
-		} catch (err) {
+		} catch {
 			error = 'Invalid expression';
 		}
 	};
 
-	const plotGraph = (expr) => {
+	const plotGraph = (expr: string) => {
 		const x = math.range(-10, 10, 0.1).toArray();
-		const y = x.map(val => {
+		const y = x.map((val) => {
 			try {
 				return math.evaluate(expr.replace(/x/g, `(${val})`));
 			} catch {
@@ -72,7 +63,7 @@ $effect(async () => {
 	];
 
 	$effect(() => {
-		const handler = (e) => {
+		const handler = (e: KeyboardEvent) => {
 			if (e.key === 'Enter') calculate();
 			else if (e.key === 'Backspace') expression = expression.slice(0, -1);
 			else if (/^[0-9+\-*/^().a-z]$/.test(e.key)) append(e.key);
@@ -80,13 +71,8 @@ $effect(async () => {
 		window.addEventListener('keydown', handler);
 		return () => window.removeEventListener('keydown', handler);
 	});
-
-	$effect(() => {
-		if (graph && graphVisible) {
-			Plotly.newPlot(graph, graphData);
-		}
-	});
 </script>
+
 
 <div class="calculator">
 	<div class="display">
@@ -100,7 +86,7 @@ $effect(async () => {
 				if (btn === '=') calculate();
 				else if (btn === 'clear') clear();
 				else append(btn);
-			}}>
+			}} class="btn btn-soft btn-accent">
 				{btn}
 			</button>
 		{/each}
@@ -112,7 +98,7 @@ $effect(async () => {
 			<ul>
 				{#each history as item}
 					<li>
-						<button type="button" onclick={() => expression = item.expression}>
+						<button type="button" onclick={() => expression = item.expression} class="btn btn-soft btn-accent">
 							{item.expression} = {item.result}
 						</button>
 					</li>
@@ -155,15 +141,11 @@ $effect(async () => {
 	button {
 		padding: 0.75rem;
 		font-size: 1rem;
-		background: #444;
-		color: white;
 		border: none;
 		border-radius: 5px;
 		cursor: pointer;
 	}
-	button:hover {
-		background: #666;
-	}
+
 	.history {
 		margin-top: 1rem;
 	}
@@ -178,4 +160,4 @@ $effect(async () => {
 		margin: 0.2rem 0;
 		border-radius: 4px;
 	}
-</style> -->
+</style>
