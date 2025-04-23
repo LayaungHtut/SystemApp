@@ -2,14 +2,13 @@
 	import '../style.css';
 	import ProfileCard from '$lib/components/profileCard/+page.svelte';
 
+	/* let { data } = $props<{
+		notes: Array<{ id: number; title: string; content: string }>;
+		user: { id: number; username: string };
+	}>(); */
 
-
-	let { data } = $props<{
-            notes: Array<{ id: number; title: string; content: string }>;
-            user: { id: number; username: string };
-        }>();
+	let { data } = $props<{ user: { id: string; username: string } | null }>();
 </script>
-
 
 <div class="navbar bg-base-100 shadow-sm">
 	<div class="navbar-start">
@@ -62,38 +61,37 @@
 				/>
 			</svg>
 		</button>
-		<!-- <div class="dropdown dropdown-end"> -->
 
 		<div>
+
+			<!-- Sign In / Sign Out -->
+			{#if data.user}
 			<div class="drawer drawer-end">
 				<input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
 				<div class="drawer-content">
 					<label for="my-drawer-4">
 						<img
 							class="w-10 rounded-full"
-							alt="Tailwind CSS Navbar component"
+							alt="User avatar"
 							src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-						/>
-					</label>
+							/>
+						</label>
+					</div>
+					<div class="drawer-side">
+						<label for="my-drawer-4" class="drawer-overlay"></label>
+						<ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+							<ProfileCard {...data} />
+						</ul>
+					</div>
 				</div>
-				<div class="drawer-side">
-					<label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
-					<ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-						<!-- Sidebar content here -->
-						<!-- <li><a>Sidebar Item 1</a></li>
-						<li><a>Sidebar Item 2</a></li> -->
-						<ProfileCard {...data}/>
-						
-					</ul>
-				</div>
+				{:else}
+				<a href="/auth/lucia/login" class="btn btn-primary">Sign In</a>
+				{/if}
 			</div>
-			<!-- </div> -->
-		</div>
 	</div>
 </div>
 
-
-	<slot />
+<slot />
 
 <footer class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
 	<aside>

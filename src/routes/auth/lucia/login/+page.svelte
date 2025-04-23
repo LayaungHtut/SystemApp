@@ -19,7 +19,7 @@
 		<p style="color: red">{form?.message ?? ''}</p>
 		<button>Login</button>
 		<!-- <button formaction="?/register">Register</button> -->
-		<button onclick={() => goto('/register')}>Register</button>
+		<button onclick={() => goto('/auth/lucia/register')}>Register</button>
 	</form>
 </div>
 

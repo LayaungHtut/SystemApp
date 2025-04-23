@@ -16,7 +16,7 @@
 			const data = await response.json();
 			message = data.message || 'An error occurred';
 		} else {
-			window.location.href = '/demo/lucia';
+			window.location.href = '/auth/lucia';
 		}
 	};
 </script>
@@ -62,7 +62,7 @@
 		{/if}
 
 		<p class="message">
-			Already have an account? <a href="../demo/lucia/login" class="link">Login here</a>
+			Already have an account? <a href="../auth/lucia/login" class="link">Login here</a>
 		</p>
 	</form>
 </div>
