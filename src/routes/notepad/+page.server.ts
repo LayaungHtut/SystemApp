@@ -4,7 +4,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 import type { Actions, PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ locals }) => {
+/* export const load: PageServerLoad = async ({ locals }) => {
 	const session = locals.session;
 	if (!session) throw redirect(302, 'auth/lucia/login');
 
@@ -22,12 +22,12 @@ export const load: PageServerLoad = async ({ locals }) => {
 		notes: userNotes,
 		user: locals.user
 	};
-};
+}; */
 
 export const actions: Actions = {
 	createNote: async ({ request, locals }) => {
 		const session = locals.session;
-		if (!session) throw redirect(302, '/login');
+		/* if (!session) throw redirect(302, '/login'); */
 
 		const formData = await request.formData();
 		const title = formData.get('title');
@@ -37,7 +37,7 @@ export const actions: Actions = {
 			return fail(400, { message: 'Invalid input' });
 		}
 
-		try {
+		/* try {
 			await db.insert(notes).values({
 				userId: session.userId,
 				title,
@@ -49,12 +49,12 @@ export const actions: Actions = {
 		} catch (error) {
 			console.error('Error creating note:', error);
 			return fail(500, { message: 'Failed to create note' });
-		}
+		} */
 	},
 
 	updateNote: async ({ request, locals }) => {
 		const session = locals.session;
-		if (!session) throw redirect(302, '/login');
+		/* if (!session) throw redirect(302, '/login'); */
 
 		const formData = await request.formData();
 		const id = formData.get('id');
@@ -72,9 +72,9 @@ export const actions: Actions = {
 				.where(eq(notes.id, Number(id)))
 				.get();
 
-			if (!note || note.userId !== session.userId) {
+			/* if (!note || note.userId !== session.userId) {
 				return fail(403, { message: 'Unauthorized' });
-			}
+			} */
 
 			await db
 				.update(notes)
@@ -91,7 +91,7 @@ export const actions: Actions = {
 
 	deleteNote: async ({ request, locals }) => {
 		const session = locals.session;
-		if (!session) throw redirect(302, '/login');
+		/* if (!session) throw redirect(302, '/login'); */
 
 		const formData = await request.formData();
 		const id = formData.get('id');
@@ -105,9 +105,9 @@ export const actions: Actions = {
 				.where(eq(notes.id, Number(id)))
 				.get();
 
-			if (!note || note.userId !== session.userId) {
+			/* if (!note || note.userId !== session.userId) {
 				return fail(403, { message: 'Unauthorized' });
-			}
+			} */
 
 			await db
 				.delete(notes)
@@ -120,8 +120,8 @@ export const actions: Actions = {
 			return fail(500, { message: 'Failed to delete note' });
 		}
 	},
-	logout: async ({ cookies }) => {
+	/* logout: async ({ cookies }) => {
 		cookies.delete('session', { path: '/' }); 
 		throw redirect(302, '/demo/lucia/login');
-	}
+	} */
 };

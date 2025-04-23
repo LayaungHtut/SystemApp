@@ -6,7 +6,6 @@
 	let { form }: { form: ActionData } = $props();
 </script>
 
-<h1>Welcome to Note Pad Online</h1>
 <div class="page-container">
 	<form method="post" action="?/login" use:enhance>
 		<label>
@@ -25,14 +24,6 @@
 </div>
 
 <style>
-	h1 {
-		text-align: center;
-		margin-bottom: 15px;
-		font-size: 28px;
-		color: #333;
-		font-weight: 600;
-	}
-
 	.page-container {
 		display: flex;
 		justify-content: center;

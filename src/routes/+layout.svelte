@@ -1,6 +1,15 @@
 <script lang="ts">
 	import '../style.css';
+	import ProfileCard from '$lib/components/profileCard/+page.svelte';
+
+
+
+	let { data } = $props<{
+            notes: Array<{ id: number; title: string; content: string }>;
+            user: { id: number; username: string };
+        }>();
 </script>
+
 
 <div class="navbar bg-base-100 shadow-sm">
 	<div class="navbar-start">
@@ -30,12 +39,11 @@
 				<li><a href="/calander">Calendar</a></li>
 				<li><a href="/musicplayer">Music Player</a></li>
 				<li><a href="/notepad">Note Pad</a></li>
-				<li><a href="/profile">Profile</a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="navbar-center">
-		<a href="/" class="btn btn-ghost text-xl">daisyUI</a>
+		<a href="/" class="btn btn-ghost text-xl">System App</a>
 	</div>
 	<div class="navbar-end">
 		<button class="btn btn-ghost btn-circle" aria-label="Search">
@@ -54,33 +62,38 @@
 				/>
 			</svg>
 		</button>
-		<div class="dropdown dropdown-end">
-			<div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-				<div class="w-10 rounded-full">
-					<img
-						alt="Tailwind CSS Navbar component"
-						src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-					/>
+		<!-- <div class="dropdown dropdown-end"> -->
+
+		<div>
+			<div class="drawer drawer-end">
+				<input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+				<div class="drawer-content">
+					<label for="my-drawer-4">
+						<img
+							class="w-10 rounded-full"
+							alt="Tailwind CSS Navbar component"
+							src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+						/>
+					</label>
+				</div>
+				<div class="drawer-side">
+					<label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
+					<ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+						<!-- Sidebar content here -->
+						<!-- <li><a>Sidebar Item 1</a></li>
+						<li><a>Sidebar Item 2</a></li> -->
+						<ProfileCard {...data}/>
+						
+					</ul>
 				</div>
 			</div>
-			<ul
-				tabindex="-1"
-				class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-			>
-				<li>
-					<a href="/" class="justify-between">
-						Profile
-						<span class="badge">New</span>
-					</a>
-				</li>
-				<li><a href="$lib/Settings">Settings</a></li>
-				<li><a href="/">Logout</a></li>
-			</ul>
+			<!-- </div> -->
 		</div>
 	</div>
 </div>
 
-<slot />
+
+	<slot />
 
 <footer class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
 	<aside>
