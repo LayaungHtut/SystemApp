@@ -36,7 +36,7 @@
 				<li><a href="/">Homepage</a></li>
 				<li><a href="/calculator">Calculator</a></li>
 				<li><a href="/calander">Calendar</a></li>
-				<li><a href="/musicplayer">Music Player</a></li>
+				<li><a href="/animeList">Anime List</a></li>
 				<li><a href="/notepad">Note Pad</a></li>
 				<li><a href="/profileCard">ProfileCard</a></li>
 			</ul>
