@@ -62,7 +62,7 @@
 		{/if}
 
 		<p class="message">
-			Already have an account? <a href="../auth/lucia/login" class="link">Login here</a>
+			Already have an account? <a href="/auth/lucia/login" class="link">Login here</a>
 		</p>
 	</form>
 </div>

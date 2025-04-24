@@ -1,11 +1,6 @@
 <script lang="ts">
-	import '../../../style.css';
-	import type { PageServerData } from './$types';
-
-	/* let { data } = $props<{
-            notes: Array<{ id: number; title: string; content: string }>;
-            user: { id: number; username: string };
-        }>(); */
+	import '../../style.css';
+	import type { PageServerData } from '../auth/lucia/$types';
 
 	let { data }: { data: PageServerData } = $props();
 </script>

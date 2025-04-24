@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../style.css';
-	import ProfileCard from '$lib/components/profileCard/+page.svelte';
+	import ProfileCard from './profileCard/+page.svelte';
 
 	/* let { data } = $props<{
 		notes: Array<{ id: number; title: string; content: string }>;
@@ -38,6 +38,7 @@
 				<li><a href="/calander">Calendar</a></li>
 				<li><a href="/musicplayer">Music Player</a></li>
 				<li><a href="/notepad">Note Pad</a></li>
+				<li><a href="/profileCard">ProfileCard</a></li>
 			</ul>
 		</div>
 	</div>
@@ -63,17 +64,16 @@
 		</button>
 
 		<div>
-
 			<!-- Sign In / Sign Out -->
 			{#if data.user}
-			<div class="drawer drawer-end">
-				<input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
-				<div class="drawer-content">
-					<label for="my-drawer-4">
-						<img
-							class="w-10 rounded-full"
-							alt="User avatar"
-							src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+				<div class="drawer drawer-end">
+					<input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+					<div class="drawer-content">
+						<label for="my-drawer-4">
+							<img
+								class="w-10 rounded-full"
+								alt="User avatar"
+								src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
 							/>
 						</label>
 					</div>
@@ -84,10 +84,10 @@
 						</ul>
 					</div>
 				</div>
-				{:else}
+			{:else}
 				<a href="/auth/lucia/login" class="btn btn-primary">Sign In</a>
-				{/if}
-			</div>
+			{/if}
+		</div>
 	</div>
 </div>
 
