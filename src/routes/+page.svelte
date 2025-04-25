@@ -3,7 +3,9 @@
 	import { goto } from '$app/navigation';
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './auth/lucia/login/$types';
-	let { form }: { form: ActionData } = $props();
+	let { form, data }: { form: ActionData; data: PageServerData } = $props();
+
+	import type { PageServerData } from './auth/lucia/$types';
 </script>
 
 <main>
@@ -17,10 +19,9 @@
 				<div class="hero-overlay"></div>
 				<div class="hero-content text-neutral-content text-center">
 					<div class="max-w-md">
-						<h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+						<h1 class="mb-5 text-5xl font-bold">Hello, world!! </h1>
 						<p class="mb-5">
-							Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
-							exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
+							This is Random Stuff. You will find a lot of random stuff here. This is a place where you can find random pages I implemented for fun.
 						</p>
 						<button class="btn btn-primary">Get Started</button>
 					</div>
@@ -36,51 +37,50 @@
 						<div class="carousel-item h-full">
 							<img
 								alt="carousel"
-								src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp"
+								src="https://i.namu.wiki/i/Wh33Jo92CkywkYMQ-J9BMiksh48mo6mOy3QGgyTAedieJh81aeOFlLwrfbRuZaZcGBOwGWD53yfHqcH5sCswig.webp"
 							/>
 						</div>
 						<div class="carousel-item h-full">
 							<img
 								alt="carousel"
-								src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp"
+								src="https://i.pinimg.com/736x/a9/0d/61/a90d61817963d0d306202027f8935391.jpg"
 							/>
 						</div>
 						<div class="carousel-item h-full">
 							<img
 								alt="carousel"
-								src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp"
+								src="https://i.pinimg.com/736x/3e/34/c3/3e34c3c9782e21789a97e230026cb786.jpg"
 							/>
 						</div>
 						<div class="carousel-item h-full">
 							<img
 								alt="carousel"
-								src="https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp"
+								src="https://public-cdn-s3-us-west-2.oss-us-east-1.aliyuncs.com/talkie-user-img/179423429476517/211247736287393.jpeg?x-oss-process=image/resize,w_1024/format,webp"
 							/>
 						</div>
 						<div class="carousel-item h-full">
 							<img
 								alt="carousel"
-								src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp"
+								src="https://media.tenor.com/t-u0MbTWh7UAAAAe/kaoruko-waguri.png"
 							/>
 						</div>
 						<div class="carousel-item h-full">
 							<img
 								alt="carousel"
-								src="https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp"
+								src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fdanbooru.donmai.us%2Fposts%2F7698042&psig=AOvVaw1WMrTs7i8dQAVW07Kg__lF&ust=1745661502341000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCND80tb18owDFQAAAAAdAAAAABAE"
 							/>
 						</div>
 						<div class="carousel-item h-full">
 							<img
 								alt="carousel"
-								src="https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp"
+								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnj5wVJE9OSup8ZHSEC0JSndHXHvk8BaSXKw&s"
 							/>
 						</div>
 					</div>
 					<div>
-						<h1 class="text-5xl font-bold">Box Office News!</h1>
+						<h1 class="text-5xl font-bold">New Waifu Arrived!</h1>
 						<p class="py-6">
-							Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
-							exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
+							This is Kaoruko Waguri, the most gorgeous waifu I have ever seen. 
 						</p>
 						<button class="btn btn-primary">Get Started</button>
 					</div>
@@ -95,26 +95,29 @@
 					<div class="text-center lg:text-left">
 						<h1 class="text-5xl font-bold">Login now!</h1>
 						<p class="py-6">
-							Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
-							exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
+							To see more random shit I implemented.
 						</p>
 					</div>
 					<div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
 						<div class="card-body">
 							<div class="page-container">
-								<form method="post" action="?/login" use:enhance>
-									<label>
-										Username(all small letters)
-										<input name="username" />
-									</label>
-									<label>
-										Password
-										<input type="password" name="password" />
-									</label>
-									<p style="color: red">{form?.message ?? ''}</p>
-									<button>Login</button>
-									<button onclick={() => goto('auth/lucia/register')}>Register</button>
-								</form>
+								{#if data.user}
+									<p>Logged in as {data.user.username}</p>
+								{:else}
+									<form method="post" action="?/login" use:enhance>
+										<label>
+											Username(all small letters)
+											<input name="username" />
+										</label>
+										<label>
+											Password
+											<input type="password" name="password" />
+										</label>
+										<p style="color: red">{form?.message ?? ''}</p>
+										<button>Login</button>
+										<button onclick={() => goto('auth/lucia/register')}>Register</button>
+									</form>
+								{/if}
 							</div>
 						</div>
 					</div>

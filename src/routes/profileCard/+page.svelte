@@ -10,8 +10,7 @@
 		<div class="user-meta">
 			<img src="https://i.pinimg.com/736x/70/17/40/7017409c5fef4a12b5ac81af0a52de10.jpg" alt="ff" />
 			<span class="label">Logged in as</span>
-			<!-- <span class="username">mr good boy</span>
-            <span class="user-id">#fdsg45dg51512ds</span> -->
+
 			<span class="username">{data.user.username}</span>
 			<span class="user-id">#{data.user.id}</span>
 		</div>
@@ -59,14 +58,14 @@
 	.user-info {
 		display: flex;
 		align-items: center;
-		/* justify-content: center; */
+
 		flex-direction: column;
 		padding: 20px;
-		/*  background-color: #f0f0f0; */
+
 		border-radius: 8px;
 		margin-bottom: 20px;
 		height: 100vh;
-		/* max-width: max-content; */
+		
 	}
 
 	.user-meta {
