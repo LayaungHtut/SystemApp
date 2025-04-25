@@ -19,9 +19,6 @@
           <p><strong>Released On:</strong> {animeDetail.released_on}</p>
           <p><strong>Episodes:</strong> {animeDetail.episodes} (Aired: {animeDetail.episodes_aired})</p>
           <p><strong>Score:</strong> {animeDetail.score}</p>
-          <div class="card-actions justify-end">
-            <a href={animeDetail.url} class="btn btn-primary btn-sm">View More</a>
-          </div>
         </div>
       </div>
       

@@ -126,15 +126,7 @@
 
 <style>
 	.page-container {
-		/* display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 100vh;
-		background: linear-gradient(to right, #e0eafc, #cfdef3);
-		padding: 20px; */
-
 		& form {
-			/* 	background-color: #ffffff; */
 			border-radius: 12px;
 			box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
 			padding: 40px 30px;
