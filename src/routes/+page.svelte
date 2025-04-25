@@ -10,7 +10,7 @@
 
 <main>
 	<div class="tabs tabs-lift tabs-bottom">
-		<input type="radio" name="my_tabs_5" class="tab" aria-label="Tab 1" checked={true} />
+		<input type="radio" name="my_tabs_5" class="tab" aria-label="Homepage" checked={true} />
 		<div class="tab-content bg-base-100 border-base-300 p-6">
 			<div
 				class="hero min-h-screen"
@@ -29,7 +29,7 @@
 			</div>
 		</div>
 
-		<input type="radio" name="my_tabs_5" class="tab" aria-label="Tab 2" />
+		<input type="radio" name="my_tabs_5" class="tab" aria-label="Waifu" />
 		<div class="tab-content bg-base-100 border-base-300 p-6">
 			<div class="hero bg-base-200 min-h-screen">
 				<div class="hero-content flex-col lg:flex-row-reverse">
@@ -88,7 +88,7 @@
 			</div>
 		</div>
 
-		<input type="radio" name="my_tabs_5" class="tab" aria-label="Tab 3" />
+		<input type="radio" name="my_tabs_5" class="tab" aria-label="Login" />
 		<div class="tab-content bg-base-100 border-base-300 p-6">
 			<div class="hero bg-base-200 min-h-screen">
 				<div class="hero-content flex-col lg:flex-row-reverse">

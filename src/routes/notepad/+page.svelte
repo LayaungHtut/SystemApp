@@ -39,21 +39,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Notes</title>
-</svelte:head>
-
-<!-- <div class="user-info">
-	<div class="user-meta">
-		<span class="label">Logged in as</span>
-		<span class="username">{data.user.username}</span>
-		<span class="user-id">#{data.user.id}</span>
-	</div>
-	<form method="post" action="?/logout">
-		<button class="signout-button" title="Sign out">Return</button>
-	</form>
-</div> -->
-
 <div class="notes-container">
 	<h1>My Notes</h1>
 
