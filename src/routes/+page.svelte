@@ -113,6 +113,7 @@
 											Password
 											<input type="password" name="password" />
 										</label>
+										<span role="button" tabindex="0" onclick={() => goto('auth/lucia/forgot-password')}>Forgot Password?</span>
 										<p style="color: red">{form?.message ?? ''}</p>
 										<button>Login</button>
 										<button onclick={() => goto('auth/lucia/register')}>Register</button>
