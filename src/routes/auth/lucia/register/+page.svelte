@@ -7,7 +7,7 @@
 		event.preventDefault();
 
 		const formData = new FormData(event.target as HTMLFormElement);
-		const response = await fetch('/register', {
+		const response = await fetch('/auth/lucia/register', {
 			method: 'POST',
 			body: formData
 		});
