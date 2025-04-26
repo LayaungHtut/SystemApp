@@ -2,23 +2,28 @@
 	let username = $state('');
 	let password = $state('');
 	let message = $state('');
+	let email = $state('');
 
 	const handleSubmit = async (event: SubmitEvent) => {
-		event.preventDefault();
+    event.preventDefault();
 
-		const formData = new FormData(event.target as HTMLFormElement);
-		const response = await fetch('/auth/lucia/register', {
-			method: 'POST',
-			body: formData
-		});
+    const formData = new FormData(event.target as HTMLFormElement);
+    const response = await fetch('/auth/lucia/register', {
+        method: 'POST',
+        body: formData
+    });
 
-		if (!response.ok) {
-			const data = await response.json();
-			message = data.message || 'An error occurred';
-		} else {
-			window.location.href = '/auth/lucia';
-		}
-	};
+    if (response.redirected) {
+        window.location.href = response.url;
+        return;
+    }
+
+    if (!response.ok) {
+        const data = await response.json();
+        message = data.message || 'An error occurred';
+    }
+};
+
 </script>
 
 <div class="form-container">
@@ -26,6 +31,17 @@
 		<h2>Create an Account</h2>
 
 		<div class="input-group">
+
+			<label for="email">Email</label>
+			<input
+				type="email"
+				id="email"
+				name="email"
+				bind:value={email}
+				placeholder="Enter your email"
+				required
+			/>
+
 			<label for="username">Username(all small letters)</label>
 			<input
 				type="text"
@@ -102,7 +118,8 @@
 				}
 
 				& input[type='text'],
-				& input[type='password'] {
+				& input[type='password'],
+				& input[type='email'] {
 					width: 100%;
 					padding: 12px;
 					font-size: 14px;
