@@ -155,12 +155,14 @@
 			<div
 				class="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content"
 			>
-			<div class="tooltip">
-				<div class="tooltip-content">
-				  <div class="animate-bounce text-orange-400 -rotate-10 text-2xl font-black">I love you!!</div>
+				<div class="tooltip">
+					<div class="tooltip-content">
+						<div class="-rotate-10 animate-bounce text-2xl font-black text-orange-400">
+							I love you!!
+						</div>
+					</div>
+					<button class="btn">Hover me</button>
 				</div>
-				<button class="btn">Hover me</button>
-			  </div>
 			</div>
 		</div>
 
@@ -210,8 +212,6 @@
 
 <style>
 	.user-info {
-		/* display: flex;
-		align-items: center; */
 		flex-direction: column;
 		padding: 20px;
 		border-radius: 8px;
@@ -222,7 +222,7 @@
 	.user-meta {
 		display: flex;
 		flex-direction: column;
-		/* align-items: center; */
+
 		justify-content: center;
 		gap: 10px;
 	}

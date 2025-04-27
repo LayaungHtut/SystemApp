@@ -105,56 +105,7 @@
 </div>
 
 <style>
-	/* .user-info {
-		position: absolute;
-		top: 1rem;
-		right: 1rem;
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		background: #f8f8fa;
-		padding: 0.75rem 1.25rem;
-		border-radius: 10px;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-		color: #333;
-		font-size: 0.9rem;
-
-		& .user-meta {
-			display: flex;
-			flex-direction: column;
-
-			& .label {
-				font-size: 0.75rem;
-				color: #777;
-			}
-
-			& .username {
-				font-weight: 600;
-				color: #007acc;
-			}
-
-			& .user-id {
-				font-family: monospace;
-				font-size: 0.75rem;
-				color: #aaa;
-			}
-		}
-
-		& .signout-button {
-			background: none;
-			border: none;
-			color: #ff5c5c;
-			font-weight: bold;
-			cursor: pointer;
-			padding: 0.25rem 0.5rem;
-			border-radius: 6px;
-			transition: background 0.2s;
-
-			&:hover {
-				background: rgba(255, 92, 92, 0.1);
-			}
-		}
-	} */
+	
 
 	.notes-container {
 		max-width: 800px;
@@ -163,7 +114,7 @@
 
 		& .note-form,
 		& .note-card {
-			/* background: #fff; */
+			
 			padding: 20px;
 			border-radius: 8px;
 			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

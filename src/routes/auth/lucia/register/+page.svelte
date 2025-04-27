@@ -5,25 +5,24 @@
 	let email = $state('');
 
 	const handleSubmit = async (event: SubmitEvent) => {
-    event.preventDefault();
+		event.preventDefault();
 
-    const formData = new FormData(event.target as HTMLFormElement);
-    const response = await fetch('/auth/lucia/register', {
-        method: 'POST',
-        body: formData
-    });
+		const formData = new FormData(event.target as HTMLFormElement);
+		const response = await fetch('/auth/lucia/register', {
+			method: 'POST',
+			body: formData
+		});
 
-    if (response.redirected) {
-        window.location.href = response.url;
-        return;
-    }
+		if (response.redirected) {
+			window.location.href = response.url;
+			return;
+		}
 
-    if (!response.ok) {
-        const data = await response.json();
-        message = data.message || 'An error occurred';
-    }
-};
-
+		if (!response.ok) {
+			const data = await response.json();
+			message = data.message || 'An error occurred';
+		}
+	};
 </script>
 
 <div class="form-container">
@@ -31,41 +30,84 @@
 		<h2>Create an Account</h2>
 
 		<div class="input-group">
+			<label class="input validator">
+				<svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<g
+						stroke-linejoin="round"
+						stroke-linecap="round"
+						stroke-width="2.5"
+						fill="none"
+						stroke="currentColor"
+					>
+						<rect width="20" height="16" x="2" y="4" rx="2"></rect>
+						<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+					</g>
+				</svg>
+				<input
+					type="email"
+					id="email"
+					name="email"
+					bind:value={email}
+					placeholder="Enter your email"
+					required
+				/>
+			</label>
+			<div class="validator-hint hidden">Enter valid email address</div>
 
-			<label for="email">Email</label>
-			<input
-				type="email"
-				id="email"
-				name="email"
-				bind:value={email}
-				placeholder="Enter your email"
-				required
-			/>
+			<label class="input validator">
+				<svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<g
+						stroke-linejoin="round"
+						stroke-linecap="round"
+						stroke-width="2.5"
+						fill="none"
+						stroke="currentColor"
+					>
+						<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+						<circle cx="12" cy="7" r="4"></circle>
+					</g>
+				</svg>
+				<input
+					type="text"
+					id="username"
+					name="username"
+					bind:value={username}
+					placeholder="Enter your username"
+					required
+				/>
+			</label>
 
-			<label for="username">Username(all small letters)</label>
-			<input
-				type="text"
-				id="username"
-				name="username"
-				bind:value={username}
-				placeholder="Enter your username"
-				required
-			/>
 			{#if message && message.includes('username')}
 				<div class="error">{message}</div>
 			{/if}
 		</div>
 
 		<div class="input-group">
-			<label for="password">Password</label>
-			<input
-				type="password"
-				id="password"
-				name="password"
-				bind:value={password}
-				placeholder="Enter your password"
-				required
-			/>
+			<label class="input validator">
+				<svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<g
+						stroke-linejoin="round"
+						stroke-linecap="round"
+						stroke-width="2.5"
+						fill="none"
+						stroke="currentColor"
+					>
+						<path
+							d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"
+						></path>
+						<circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
+					</g>
+				</svg>
+				<input
+					type="password"
+					id="password"
+					name="password"
+					bind:value={password}
+					placeholder="Enter your password"
+					required
+				/>
+			</label>
+
 			{#if message && message.includes('password')}
 				<div class="error">{message}</div>
 			{/if}
@@ -109,15 +151,15 @@
 			& .input-group {
 				margin-bottom: 15px;
 
-				& label {
+				/* & label {
 					font-size: 14px;
 					font-weight: 600;
 					color: #333;
 					display: block;
 					margin-bottom: 5px;
 				}
-
-				& input[type='text'],
+ */
+				/* & input[type='text'],
 				& input[type='password'],
 				& input[type='email'] {
 					width: 100%;
@@ -133,7 +175,7 @@
 						outline: none;
 					}
 				}
-
+ */
 				& .error {
 					color: red;
 					font-size: 12px;
