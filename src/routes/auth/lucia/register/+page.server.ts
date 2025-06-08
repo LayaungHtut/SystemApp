@@ -31,7 +31,10 @@ export const actions: Actions = {
 			return fail(400, { message: 'Invalid email' });
 		}
 
-		const existing = await db.select().from(table.user).where(eq(table.user.email, email as string));
+		const existing = await db
+			.select()
+			.from(table.user)
+			.where(eq(table.user.email, email as string));
 		if (existing.length > 0) {
 			return fail(400, { message: 'Email already in use' });
 		}
@@ -57,7 +60,7 @@ export const actions: Actions = {
 			auth.setSessionTokenCookie(event, sessionToken, session.expiresAt);
 		} catch (e) {
 			console.error(e);
-			return fail(500, { message: 'An error occurred' });
+			return fail(500, { message: 'Email already in used' });
 		}
 
 		return redirect(302, '/auth/lucia');

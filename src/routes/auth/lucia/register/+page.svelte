@@ -1,8 +1,8 @@
 <script lang="ts">
 	let username = $state('');
 	let password = $state('');
-	let message = $state('');
 	let email = $state('');
+	let message = $state('');
 
 	const handleSubmit = async (event: SubmitEvent) => {
 		event.preventDefault();
@@ -18,9 +18,11 @@
 			return;
 		}
 
-		if (!response.ok) {
+		try {
 			const data = await response.json();
-			message = data.message || 'An error occurred';
+			message = data.message || 'Email or username already exists';
+		} catch {
+			message = 'An error occurred';
 		}
 	};
 </script>
@@ -51,6 +53,9 @@
 					placeholder="Enter your email"
 					required
 				/>
+				<!-- {#if message}
+					<p class="message">{message}</p>
+				{/if} -->
 			</label>
 			<div class="validator-hint hidden">Enter valid email address</div>
 
